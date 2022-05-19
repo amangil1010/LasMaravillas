@@ -53,25 +53,28 @@ public class PrimaryController implements Initializable {
     public void initialize(URL url,ResourceBundle rb) {
         System.out.println("ijkqshgdfiuasjhgdfasjkihd");
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+        columnNombreCreador.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
 ////        columnNombre.setCellValueFactory(new PropertyValueFactory<>("apellido"));
 ////        columnLocalizacion.setCellValueFactory(new PropertyValueFactory<>("localizacion"));
 ////        columnFechaDeConstruccion.setCellValueFactory(new PropertyValueFactory<>("fechaDeConstruccion"));
-        columnLocalizacion.setCellValueFactory(
-                    cellData -> {
-                        SimpleStringProperty property = new SimpleStringProperty();
-                        if (cellData.getValue().getLocalizacion() != null) {
-                            property.setValue(cellData.getValue().getLocalizacion().getNombre());
-                        }
-                        return property;
-                    });
+//        columnLocalizacion.setCellValueFactory(
+//                    cellData -> {
+//                        SimpleStringProperty property = new SimpleStringProperty();
+//                        if (cellData.getValue().getLocalizacion() != null) {
+//                            property.setValue(cellData.getValue().getLocalizacion().getNombre());
+//                        }
+//                        return property;
+//                    });
         tableViewMaravilla.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
                     maravillaSeleccionada = newValue;
                     if (maravillaSeleccionada != null) {
                         textFieldNombre.setText(maravillaSeleccionada.getNombre());
-                        textFieldLocalizacion.setText(String.valueOf(maravillaSeleccionada.getLocalizacion()));  
+                        textFieldNombreCreador.setText(maravillaSeleccionada.getApellidos());
+//                        textFieldLocalizacion.setText(String.valueOf(maravillaSeleccionada.getLocalizacion()));  
                     } else {
                         textFieldNombre.setText("");
-                        textFieldLocalizacion.setText("");
+                        textFieldNombreCreador.setText("");
+//                        textFieldLocalizacion.setText("");
                     }
                 });
         cargarTodasPersonas();
@@ -87,6 +90,7 @@ public class PrimaryController implements Initializable {
     private void onActionButtonGuardar2(ActionEvent event) {
         if (maravillaSeleccionada != null) {
             maravillaSeleccionada.setNombre(textFieldNombre.getText());
+            maravillaSeleccionada.setApellidos(textFieldNombreCreador.getText());
 //            maravillaSeleccionada.setNombre(textFieldLocalizacion.getText());
             App.em.getTransaction().begin();
             App.em.merge(maravillaSeleccionada);

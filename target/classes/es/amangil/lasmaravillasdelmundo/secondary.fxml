@@ -24,6 +24,7 @@
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -46,53 +47,53 @@
                   <Insets left="20.0" right="100.0" />
                </GridPane.margin>
             </TextField>
-            <TextField fx:id="textFieldPrecioEntrada" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <TextField fx:id="textFieldPrecioEntrada" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <GridPane.margin>
-                  <Insets left="20.0" />
+                  <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </TextField>
-            <Label text="Fecha de Construccion" GridPane.rowIndex="2">
+            <Label text="Fecha de Construccion" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Estado de la Maravilla" GridPane.rowIndex="3">
+            <Label text="Estado de la Maravilla" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Localizacion" GridPane.rowIndex="1">
+            <Label text="Localizacion" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Precio de la entrada" GridPane.rowIndex="4">
+            <Label text="Precio de la entrada" GridPane.rowIndex="5">
                <padding>
                   <Insets left="10.0" />
                </padding>
             </Label>
-            <Label text="Sigue existiendo" GridPane.rowIndex="5">
+            <Label text="Sigue existiendo" GridPane.rowIndex="6">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
-            <Label text="Foto" GridPane.rowIndex="8">
+            <Label text="Foto" GridPane.rowIndex="9">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
             </Label>
             <Button mnemonicParsing="false" onAction="#onActionButtonGuardar" text="Guardar" translateX="370.0" GridPane.columnIndex="1" />
-            <ComboBox fx:id="comboBoxLocalizacion" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ComboBox fx:id="comboBoxLocalizacion" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </ComboBox>
-            <CheckBox fx:id="checkBoxSigueExistiendo" mnemonicParsing="false" text="Sigue existiendo" GridPane.columnIndex="1" GridPane.rowIndex="5">
+            <CheckBox fx:id="checkBoxSigueExistiendo" mnemonicParsing="false" text="Sigue existiendo" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <padding>
                   <Insets left="20.0" />
                </padding>
             </CheckBox>
-            <RadioButton fx:id="radioButtonDestruida" mnemonicParsing="false" text="Destruida" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <RadioButton fx:id="radioButtonDestruida" mnemonicParsing="false" text="Destruida" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <GridPane.margin>
                   <Insets left="10.0" />
                </GridPane.margin>
@@ -100,14 +101,14 @@
                   <ToggleGroup fx:id="estadoMaravillaGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="radioButtonRuinas" mnemonicParsing="false" text="Ruinas" toggleGroup="$estadoMaravillaGroup" translateX="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <RadioButton fx:id="radioButtonBuenEstado" mnemonicParsing="false" text="Buen Estado" toggleGroup="$estadoMaravillaGroup" translateX="300.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <DatePicker fx:id="datePickerFechaDeConstruccion" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <RadioButton fx:id="radioButtonRuinas" mnemonicParsing="false" text="Ruinas" toggleGroup="$estadoMaravillaGroup" translateX="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <RadioButton fx:id="radioButtonBuenEstado" mnemonicParsing="false" text="Buen Estado" toggleGroup="$estadoMaravillaGroup" translateX="300.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <DatePicker fx:id="datePickerFechaDeConstruccion" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <GridPane.margin>
                   <Insets left="20.0" />
                </GridPane.margin>
             </DatePicker>
-            <Button mnemonicParsing="false" text="Examinar..." translateX="225.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
+            <Button mnemonicParsing="false" text="Examinar..." translateX="225.0" GridPane.columnIndex="1" GridPane.rowIndex="7">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -115,9 +116,19 @@
                   <Insets left="20.0" />
                </GridPane.margin>
             </Button>
-            <Button mnemonicParsing="false" text="Suprimir Foto" translateX="325.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Button mnemonicParsing="false" text="Cancelar" translateX="370.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <ImageView fx:id="imageViewFoto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <Button mnemonicParsing="false" text="Suprimir Foto" translateX="325.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+            <Button mnemonicParsing="false" text="Cancelar" translateX="370.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ImageView fx:id="imageViewFoto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+            <Label text="Nombre Del Creador" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </Label>
+            <TextField fx:id="textFieldNombreCreador" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="20.0" right="20.0" />
+               </GridPane.margin>
+            </TextField>
          </children>
       </GridPane>
    </center>

@@ -48,6 +48,8 @@ public class SecondaryController implements Initializable{
     @FXML
     private TextField textFieldNombre;
     @FXML
+    private TextField textFieldNombreCreador;
+    @FXML
     private ComboBox<Localizacion> comboBoxLocalizacion;
     @FXML
     private DatePicker datePickerFechaDeConstruccion;
@@ -81,6 +83,7 @@ public class SecondaryController implements Initializable{
     
     private void mostrarDatos(){
         textFieldNombre.setText(maravilla.getNombre());
+        textFieldNombreCreador.setText(maravilla.getApellidos());
         
         if (maravilla.getSigueExistiendo() != null) {
             checkBoxSigueExistiendo.setSelected(maravilla.getSigueExistiendo());
@@ -165,6 +168,8 @@ public class SecondaryController implements Initializable{
             boolean errorFormato=false;
             
             maravilla.setNombre(textFieldNombre.getText());
+            maravilla.setApellidos(textFieldNombreCreador.getText());
+            
             maravilla.setPrecioDeEntrada(BigDecimal.valueOf(Double.valueOf(textFieldPrecioEntrada.getText()).doubleValue()));
             
             maravilla.setSigueExistiendo(checkBoxSigueExistiendo.isSelected());
