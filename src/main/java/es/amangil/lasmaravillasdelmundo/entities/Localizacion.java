@@ -8,32 +8,42 @@ package es.amangil.lasmaravillasdelmundo.entities;
 import es.amangil.lasmaravillasdelmundo.entities.Maravilla;
 import java.io.Serializable;
 import java.util.Collection;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 /**
  *
  * @author Usuario
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "LOCALIZACION")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Localizacion.findAll", query = "SELECT l FROM Localizacion l"),
-    @javax.persistence.NamedQuery(name = "Localizacion.findById", query = "SELECT l FROM Localizacion l WHERE l.id = :id"),
-    @javax.persistence.NamedQuery(name = "Localizacion.findByCodigo", query = "SELECT l FROM Localizacion l WHERE l.codigo = :codigo"),
-    @javax.persistence.NamedQuery(name = "Localizacion.findByNombre", query = "SELECT l FROM Localizacion l WHERE l.nombre = :nombre")})
+@Entity
+@Table(name = "LOCALIZACION")
+@NamedQueries({
+    @NamedQuery(name = "Localizacion.findAll", query = "SELECT l FROM Localizacion l"),
+    @NamedQuery(name = "Localizacion.findById", query = "SELECT l FROM Localizacion l WHERE l.id = :id"),
+    @NamedQuery(name = "Localizacion.findByCodigo", query = "SELECT l FROM Localizacion l WHERE l.codigo = :codigo"),
+    @NamedQuery(name = "Localizacion.findByNombre", query = "SELECT l FROM Localizacion l WHERE l.nombre = :nombre")})
 public class Localizacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "ID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID")
     private Integer id;
-    @javax.persistence.Column(name = "CODIGO")
+    @Column(name = "CODIGO")
     private String codigo;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "NOMBRE")
+    @Basic(optional = false)
+    @Column(name = "NOMBRE")
     private String nombre;
-    @javax.persistence.OneToMany(mappedBy = "localizacion")
+    @OneToMany(mappedBy = "localizacion")
     private Collection<Maravilla> maravillaCollection;
 
     public Localizacion() {

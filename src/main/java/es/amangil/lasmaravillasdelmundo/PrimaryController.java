@@ -53,7 +53,7 @@ public class PrimaryController implements Initializable {
     public void initialize(URL url,ResourceBundle rb) {
         System.out.println("ijkqshgdfiuasjhgdfasjkihd");
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
-        columnNombreCreador.setCellValueFactory(new PropertyValueFactory<>("apellidos"));
+        columnNombreCreador.setCellValueFactory(new PropertyValueFactory<>("nombreCreador"));
 ////        columnNombre.setCellValueFactory(new PropertyValueFactory<>("apellido"));
 ////        columnLocalizacion.setCellValueFactory(new PropertyValueFactory<>("localizacion"));
 ////        columnFechaDeConstruccion.setCellValueFactory(new PropertyValueFactory<>("fechaDeConstruccion"));
@@ -69,7 +69,7 @@ public class PrimaryController implements Initializable {
                     maravillaSeleccionada = newValue;
                     if (maravillaSeleccionada != null) {
                         textFieldNombre.setText(maravillaSeleccionada.getNombre());
-                        textFieldNombreCreador.setText(maravillaSeleccionada.getApellidos());
+                        textFieldNombreCreador.setText(maravillaSeleccionada.getNombreCreador());
 //                        textFieldLocalizacion.setText(String.valueOf(maravillaSeleccionada.getLocalizacion()));  
                     } else {
                         textFieldNombre.setText("");
@@ -90,7 +90,7 @@ public class PrimaryController implements Initializable {
     private void onActionButtonGuardar2(ActionEvent event) {
         if (maravillaSeleccionada != null) {
             maravillaSeleccionada.setNombre(textFieldNombre.getText());
-            maravillaSeleccionada.setApellidos(textFieldNombreCreador.getText());
+            maravillaSeleccionada.setNombreCreador(textFieldNombreCreador.getText());
 //            maravillaSeleccionada.setNombre(textFieldLocalizacion.getText());
             App.em.getTransaction().begin();
             App.em.merge(maravillaSeleccionada);
@@ -137,6 +137,24 @@ public class PrimaryController implements Initializable {
                 TablePosition pos = new TablePosition(tableViewMaravilla, numFilaSeleccionada, null);
                 tableViewMaravilla.getFocusModel().focus(pos);
                 tableViewMaravilla.requestFocus();
+            }
+        } else {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Atencion");
+            alert.setHeaderText("Debe seleccionar un registro");
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void onActionButtonEditar(ActionEvent event) {
+        if(maravillaSeleccionada != null) {
+            try {
+                App.setRoot("secondary");
+                SecondaryController secondaryController = (SecondaryController)App.fxmlLoader.getController();
+                secondaryController.setMaravilla(maravillaSeleccionada, false);
+            } catch (IOException ex) {
+                Logger.getLogger(PrimaryController.class.getName()).log(Level.SEVERE, ex.getMessage(), ex);
             }
         } else {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);

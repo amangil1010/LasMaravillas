@@ -117,7 +117,7 @@
                </GridPane.margin>
             </Button>
             <Button mnemonicParsing="false" text="Suprimir Foto" translateX="325.0" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <Button mnemonicParsing="false" text="Cancelar" translateX="370.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button mnemonicParsing="false" onAction="#onActionButtonGuardar" text="Cancelar" translateX="370.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ImageView fx:id="imageViewFoto" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <Label text="Nombre Del Creador" GridPane.rowIndex="1">
                <GridPane.margin>

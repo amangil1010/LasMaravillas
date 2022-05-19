@@ -9,54 +9,64 @@ import es.amangil.lasmaravillasdelmundo.entities.Localizacion;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
  * @author Usuario
  */
-@javax.persistence.Entity
-@javax.persistence.Table(name = "MARAVILLA")
-@javax.persistence.NamedQueries({
-    @javax.persistence.NamedQuery(name = "Maravilla.findAll", query = "SELECT m FROM Maravilla m"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findById", query = "SELECT m FROM Maravilla m WHERE m.id = :id"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findByNombre", query = "SELECT m FROM Maravilla m WHERE m.nombre = :nombre"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findByApellidos", query = "SELECT m FROM Maravilla m WHERE m.apellidos = :apellidos"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findByFechaDeConstruccion", query = "SELECT m FROM Maravilla m WHERE m.fechaDeConstruccion = :fechaDeConstruccion"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findByNumHijos", query = "SELECT m FROM Maravilla m WHERE m.numHijos = :numHijos"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findByEstadoDeLaMaravilla", query = "SELECT m FROM Maravilla m WHERE m.estadoDeLaMaravilla = :estadoDeLaMaravilla"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findByPrecioDeEntrada", query = "SELECT m FROM Maravilla m WHERE m.precioDeEntrada = :precioDeEntrada"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findBySigueExistiendo", query = "SELECT m FROM Maravilla m WHERE m.sigueExistiendo = :sigueExistiendo"),
-    @javax.persistence.NamedQuery(name = "Maravilla.findByFoto", query = "SELECT m FROM Maravilla m WHERE m.foto = :foto")})
+@Entity
+@Table(name = "MARAVILLA")
+@NamedQueries({
+    @NamedQuery(name = "Maravilla.findAll", query = "SELECT m FROM Maravilla m"),
+    @NamedQuery(name = "Maravilla.findById", query = "SELECT m FROM Maravilla m WHERE m.id = :id"),
+    @NamedQuery(name = "Maravilla.findByNombre", query = "SELECT m FROM Maravilla m WHERE m.nombre = :nombre"),
+    @NamedQuery(name = "Maravilla.findByNombreCreador", query = "SELECT m FROM Maravilla m WHERE m.nombreCreador = :nombreCreador"),
+    @NamedQuery(name = "Maravilla.findByFechaDeConstruccion", query = "SELECT m FROM Maravilla m WHERE m.fechaDeConstruccion = :fechaDeConstruccion"),
+    @NamedQuery(name = "Maravilla.findByEstadoDeLaMaravilla", query = "SELECT m FROM Maravilla m WHERE m.estadoDeLaMaravilla = :estadoDeLaMaravilla"),
+    @NamedQuery(name = "Maravilla.findByPrecioDeEntrada", query = "SELECT m FROM Maravilla m WHERE m.precioDeEntrada = :precioDeEntrada"),
+    @NamedQuery(name = "Maravilla.findBySigueExistiendo", query = "SELECT m FROM Maravilla m WHERE m.sigueExistiendo = :sigueExistiendo"),
+    @NamedQuery(name = "Maravilla.findByFoto", query = "SELECT m FROM Maravilla m WHERE m.foto = :foto")})
 public class Maravilla implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @javax.persistence.Id
-    @javax.persistence.GeneratedValue(strategy = javax.persistence.GenerationType.IDENTITY)
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "ID")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "ID")
     private Integer id;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "NOMBRE")
+    @Basic(optional = false)
+    @Column(name = "NOMBRE")
     private String nombre;
-    @javax.persistence.Basic(optional = false)
-    @javax.persistence.Column(name = "APELLIDOS")
-    private String apellidos;
-    @javax.persistence.Column(name = "FECHA_DE_CONSTRUCCION")
-    @javax.persistence.Temporal(javax.persistence.TemporalType.DATE)
+    @Basic(optional = false)
+    @Column(name = "NOMBRE_CREADOR")
+    private String nombreCreador;
+    @Column(name = "FECHA_DE_CONSTRUCCION")
+    @Temporal(TemporalType.DATE)
     private Date fechaDeConstruccion;
-    @javax.persistence.Column(name = "NUM_HIJOS")
-    private Short numHijos;
-    @javax.persistence.Column(name = "ESTADO_DE_LA_MARAVILLA")
+    @Column(name = "ESTADO_DE_LA_MARAVILLA")
     private Character estadoDeLaMaravilla;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
-    @javax.persistence.Column(name = "PRECIO_DE_ENTRADA")
+    @Column(name = "PRECIO_DE_ENTRADA")
     private BigDecimal precioDeEntrada;
-    @javax.persistence.Column(name = "SIGUE_EXISTIENDO")
+    @Column(name = "SIGUE_EXISTIENDO")
     private Boolean sigueExistiendo;
-    @javax.persistence.Column(name = "FOTO")
+    @Column(name = "FOTO")
     private String foto;
-    @javax.persistence.JoinColumn(name = "LOCALIZACION", referencedColumnName = "ID")
-    @javax.persistence.ManyToOne
+    @JoinColumn(name = "LOCALIZACION", referencedColumnName = "ID")
+    @ManyToOne
     private Localizacion localizacion;
 
     public Maravilla() {
@@ -66,10 +76,10 @@ public class Maravilla implements Serializable {
         this.id = id;
     }
 
-    public Maravilla(Integer id, String nombre, String apellidos) {
+    public Maravilla(Integer id, String nombre, String nombreCreador) {
         this.id = id;
         this.nombre = nombre;
-        this.apellidos = apellidos;
+        this.nombreCreador = nombreCreador;
     }
 
     public Integer getId() {
@@ -88,12 +98,12 @@ public class Maravilla implements Serializable {
         this.nombre = nombre;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public String getNombreCreador() {
+        return nombreCreador;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public void setNombreCreador(String nombreCreador) {
+        this.nombreCreador = nombreCreador;
     }
 
     public Date getFechaDeConstruccion() {
@@ -102,14 +112,6 @@ public class Maravilla implements Serializable {
 
     public void setFechaDeConstruccion(Date fechaDeConstruccion) {
         this.fechaDeConstruccion = fechaDeConstruccion;
-    }
-
-    public Short getNumHijos() {
-        return numHijos;
-    }
-
-    public void setNumHijos(Short numHijos) {
-        this.numHijos = numHijos;
     }
 
     public Character getEstadoDeLaMaravilla() {

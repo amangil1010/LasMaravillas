@@ -83,7 +83,7 @@ public class SecondaryController implements Initializable{
     
     private void mostrarDatos(){
         textFieldNombre.setText(maravilla.getNombre());
-        textFieldNombreCreador.setText(maravilla.getApellidos());
+        textFieldNombreCreador.setText(maravilla.getNombreCreador());
         
         if (maravilla.getSigueExistiendo() != null) {
             checkBoxSigueExistiendo.setSelected(maravilla.getSigueExistiendo());
@@ -168,7 +168,7 @@ public class SecondaryController implements Initializable{
             boolean errorFormato=false;
             
             maravilla.setNombre(textFieldNombre.getText());
-            maravilla.setApellidos(textFieldNombreCreador.getText());
+            maravilla.setNombreCreador(textFieldNombreCreador.getText());
             
             maravilla.setPrecioDeEntrada(BigDecimal.valueOf(Double.valueOf(textFieldPrecioEntrada.getText()).doubleValue()));
             
