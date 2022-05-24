@@ -37,10 +37,10 @@ public class App extends Application {
         stage.setScene(scene);
         stage.show();
         
-        Maravilla m = new Maravilla(0,"Pepe","Ramos");
-        em.getTransaction().begin();
-        em.persist(m);
-        em.getTransaction().commit();
+//        Maravilla m = new Maravilla(0,"Pepe","Ramos");
+//        em.getTransaction().begin();
+//        em.persist(m);
+//        em.getTransaction().commit();
     }
     
     

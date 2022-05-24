@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TablePosition;
 import javafx.scene.control.TableView;
@@ -33,21 +34,13 @@ public class PrimaryController implements Initializable {
     @FXML
     private TableColumn<Maravilla, String> columnNombreCreador;
     @FXML
-    private TableColumn<Maravilla, String> columnEstadoDeLaMaravilla;
-    @FXML
-    private TableColumn<Maravilla, String> columnLocalizacion;
-    @FXML
-    private TableColumn<Maravilla, String> columnFechaDeConstruccion;
-    @FXML
-    private TableColumn<Maravilla, String> columnProvincia;
-    @FXML
     private TextField textFieldNombre;
-    @FXML
-    private TextField textFieldLocalizacion;
     @FXML
     private TextField textFieldNombreCreador;
     @FXML
-    private AnchorPane rootContactosView;
+    private TextField textFieldBuscar;
+    @FXML
+    private CheckBox checkCoincide;
     
     @Override
     public void initialize(URL url,ResourceBundle rb) {
@@ -164,8 +157,30 @@ public class PrimaryController implements Initializable {
         }
     }
     
-    
     @FXML
+    private void onActionButtonBuscar(ActionEvent event) {
+        if(!textFieldBuscar.getText().isEmpty()) {
+            if(checkCoincide.isSelected()) {
+                Query queryMaravillaFindAll = App.em.createNamedQuery("Maravilla.findByNombre");
+                queryMaravillaFindAll.setParameter("nombre", textFieldBuscar.getText());
+                List<Maravilla> listMaravilla = queryMaravillaFindAll.getResultList();
+                tableViewMaravilla.setItems(FXCollections.observableArrayList(listMaravilla));
+            } else {
+                String strQuery = "SELECT * FROM Maravilla WHERE LOWER(nombre) LIKE ";
+                strQuery += "\'%" + textFieldBuscar.getText().toLowerCase() + "%\'";
+                Query queryMaravillaFindAll = App.em.createNativeQuery(strQuery, Maravilla.class);
+                
+                List<Maravilla> listMaravilla = queryMaravillaFindAll.getResultList();
+                tableViewMaravilla.setItems(FXCollections.observableArrayList(listMaravilla));
+                
+                Logger.getLogger(this.getClass().getName()).log(Level.INFO, strQuery);
+            }
+        } else {
+            cargarTodasPersonas();
+        }
+    }
+    
+    
     private void switchToSecondary() throws IOException {
         App.setRoot("secondary");
     }
