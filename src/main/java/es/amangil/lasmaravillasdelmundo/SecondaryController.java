@@ -78,6 +78,7 @@ public class SecondaryController implements Initializable{
     @FXML
     private ToggleGroup estadoMaravillaGroup;
     
+    
     public void initialize(URL url, ResourceBundle rb){
     }
     
