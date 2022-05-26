@@ -44,7 +44,7 @@ public class PrimaryController implements Initializable {
     
     @Override
     public void initialize(URL url,ResourceBundle rb) {
-        System.out.println("ijkqshgdfiuasjhgdfasjkihd");
+        System.out.println("Entra en el Initialize");
         columnNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
         columnNombreCreador.setCellValueFactory(new PropertyValueFactory<>("nombreCreador"));
 ////        columnNombre.setCellValueFactory(new PropertyValueFactory<>("apellido"));
