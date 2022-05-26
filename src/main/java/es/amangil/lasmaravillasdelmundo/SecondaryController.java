@@ -106,15 +106,16 @@ public class SecondaryController implements Initializable{
         }
         
         if (maravilla.getEstadoDeLaMaravilla() != null) {
+            System.out.println(maravilla.getEstadoDeLaMaravilla());
             switch (maravilla.getEstadoDeLaMaravilla()) {
                 case DESTRUIDA:
                     radioButtonDestruida.setSelected(true);
                     break;
                 case RUINAS:
-                    radioButtonDestruida.setSelected(true);
+                    radioButtonRuinas.setSelected(true);
                     break;
                 case BUEN_ESTADO:
-                    radioButtonDestruida.setSelected(true);
+                    radioButtonBuenEstado.setSelected(true);
                     break;
             }
         }
